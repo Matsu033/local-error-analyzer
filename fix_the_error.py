@@ -37,7 +37,7 @@ def perform_analysis(source_code, error_message, language, learning_mode):
 
     user_prompt = f"""
     対象コード:
-```{language}
+    ```{language}
     {source_code}
     ```
     
