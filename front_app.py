@@ -15,7 +15,7 @@ with error_code_screen:
 
 if st.button("解析実行"):
     if source_code and error_message:
-        with st.spinner("AIが解析中..."):
+        with st.spinner("AIが解析中.数分かかります..."):
             try:
                 # 外部ファイルの中にある関数を実行
                 result = perform_analysis(source_code, error_message,language)
