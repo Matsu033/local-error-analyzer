@@ -6,22 +6,8 @@ from fix_the_error import perform_analysis  # 自作したファイルを読み�
 # python -m streamlit run "C:\エラー改善プログラム\local-error-analyzer\front_app.py"
 
 st.set_page_config(page_title="プログラミング学習支援AI", layout="wide")
-st.title("🎓 初学者・中級者向け プログラミング学習コーチ")
+st.title("初学者・中級者向け プログラミング学習コーチ")
 
-# Ctrl+C によるStreamlitのキャッシュクリア挙動を強制停止するJavaScript(エラーメッセージを出さないようにする)
-st.components.v1.html(
-    """
-    <script>
-    window.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-            // Streamlitの親要素にイベントが伝わるのを阻止する
-            e.stopPropagation();
-        }
-    }, true);
-    </script>
-    """,
-    height=0,  # 画面を汚さないように高さはゼロ
-)
 
 # 画面の設定
 source_code_screen, error_code_screen = st.columns(2)
@@ -42,13 +28,13 @@ with error_code_screen:
 
 if st.button("解析実行"):
     if source_code and error_message:
-        with st.spinner("AIが解析中..."):
+        with st.spinner("AIが解析中。実行には数分かかることがあります..."):
             try:
                 # 外部ファイルの中にある関数を実行
-                result = perform_analysis(source_code, error_message,language)
+                result = perform_analysis(source_code, error_message,language,learning_mode)
 
                 # 結果を画面に表示
                 st.subheader("解析結果")
-                st.markdown(result)
+                st.write_stream(result)
             except Exception as e:
                 st.error(f"解析中にエラーが発生しました: {e}")
