@@ -1,4 +1,3 @@
-# fix_the_error.py
 import ollama
 
 def perform_analysis(source_code, error_message, language, learning_mode):

@@ -1,4 +1,3 @@
-# front_app.py
 import streamlit as st  # ブラウザ画面を作るためのツールを読み込み
 from fix_the_error import perform_analysis  # 自作したファイルを読み込む
 
